@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Briefcase } from "lucide-react";
 
 const experiences = [
   {
@@ -58,14 +58,19 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <section className="py-24 px-6 sm:px-12 lg:px-24 bg-white">
+    <section className="py-24 px-6 sm:px-12 lg:px-24 bg-white/80 bg-grid-pattern relative">
+      <div className="absolute top-0 right-0 w-[40vw] h-[40vw] bg-accent-blue/5 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2" />
+      
       <div className="max-w-4xl mx-auto">
         <motion.h2 
            initial={{ opacity: 0, y: 20 }}
            whileInView={{ opacity: 1, y: 0 }}
            viewport={{ once: true }}
-           className="text-4xl md:text-5xl font-bold mb-16 tracking-tight"
+           className="text-4xl md:text-5xl font-bold mb-16 tracking-tight flex items-center gap-4"
         >
+          <div className="bg-ink p-3 rounded-2xl text-white">
+            <Briefcase size={32} />
+          </div>
           Career Trajectory
         </motion.h2>
 
@@ -77,10 +82,10 @@ export default function Experience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="group relative flex flex-col md:flex-row gap-8 items-start border-b border-ink/10 pb-12 last:border-0"
+              className="group relative flex flex-col md:flex-row gap-8 items-start border-b border-ink/10 pb-12 last:border-0 bg-white/50 p-8 rounded-3xl hover:bg-white transition-colors hover:shadow-sm"
             >
               <div className="w-full md:w-1/3 pt-1 text-ink-muted">
-                <p className="font-mono text-sm tracking-wider uppercase mb-2">{exp.period}</p>
+                <p className="font-mono text-sm tracking-wider uppercase mb-2 bg-ink/5 inline-block px-3 py-1 rounded-full">{exp.period}</p>
                 <div className="inline-block px-3 py-1 bg-accent-orange/10 text-accent-orange text-xs font-bold uppercase rounded-md mb-3">
                   {exp.tier} — {exp.phase}
                 </div>
@@ -94,8 +99,8 @@ export default function Experience() {
                 <p className="text-xl text-ink/80 font-medium mb-6">{exp.role}</p>
                 <ul className="space-y-3">
                   {exp.highlights.map((highlight, hIdx) => (
-                    <li key={hIdx} className="relative pl-5 text-ink-muted leading-relaxed text-sm md:text-base">
-                      <span className="absolute left-0 top-2 w-1.5 h-1.5 bg-ink/30 rounded-full" />
+                    <li key={hIdx} className="relative pl-6 text-ink-muted leading-relaxed text-sm md:text-base">
+                      <span className="absolute left-0 top-2 w-1.5 h-1.5 bg-accent-orange rounded-full" />
                       {highlight}
                     </li>
                   ))}
